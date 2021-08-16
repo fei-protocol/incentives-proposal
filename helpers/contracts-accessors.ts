@@ -15,6 +15,7 @@ import {
   InitializableAdminUpgradeabilityProxy__factory,
   StakedTokenIncentivesController,
   StakedTokenIncentivesController__factory,
+  ERC20TokenIncentivesController__factory
 } from '../types';
 import { DefenderRelaySigner } from 'defender-relay-client/lib/ethers';
 import { Signer } from 'ethers';
@@ -26,9 +27,11 @@ export const deployAaveIncentivesController = async (
 ) => {
   const id = eContractid.StakedTokenIncentivesController;
   const args: [string, string] = [aavePsm, emissionManager];
-  const instance = await new StakedTokenIncentivesController__factory(
+  const factory =  process.env.ERC20_INCENTIVES ? ERC20TokenIncentivesController__factory : StakedTokenIncentivesController__factory;
+  const instance = await new factory(
     signer || (await getFirstSigner())
   ).deploy(...args);
+
   await instance.deployTransaction.wait();
   if (verify) {
     await verifyContract(instance.address, args);

@@ -2,14 +2,13 @@
 pragma solidity 0.7.5;
 pragma experimental ABIEncoderV2;
 
-import {SafeERC20} from '@aave/aave-stake/contracts/lib/SafeERC20.sol';
-import {SafeMath} from '../lib/SafeMath.sol';
-import {DistributionTypes} from '../lib/DistributionTypes.sol';
-import {VersionedInitializable} from '@aave/aave-stake/contracts/utils/VersionedInitializable.sol';
-import {DistributionManager} from './DistributionManager.sol';
-import {IERC20} from '@aave/aave-stake/contracts/interfaces/IERC20.sol';
-import {IScaledBalanceToken} from '../interfaces/IScaledBalanceToken.sol';
-import {IAaveIncentivesController} from '../interfaces/IAaveIncentivesController.sol';
+import '@aave/aave-stake/contracts/lib/SafeERC20.sol';
+import '../lib/DistributionTypes.sol';
+import '@aave/aave-stake/contracts/utils/VersionedInitializable.sol';
+import './DistributionManager.sol';
+import '@aave/aave-stake/contracts/interfaces/IERC20.sol';
+import '../interfaces/IScaledBalanceToken.sol';
+import '../interfaces/IAaveIncentivesController.sol';
 
 /**
  * @title ERC20TokenIncentivesController
